@@ -6,28 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel=“shortcut icon” href=“[location of your favicon]” type=“image/x-icon”/>
+
 </head>
 
 <body>
-    <div class="" container>
-        <h1 id="headerTitle"> incredials<span style="display:none">123</span></h1>
-        <span>1</span>
+
+    <header id="mainHeader" class="bg-sucess text-white p-4 mb-3>" <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 id="headerTitle">item lister</h1>
+            </div>
+            <div class="col-md-6 align -self-center">
+                <input type="text" class="form-control" id="filter" placeholder="Search Items...">
+            </div>
+        </div>
+
+        </div>
+    </header>
+    <div class="container">
+        <div id="main" class="card card-body"></div>
+        <h2 class="title">add item</h2>
+        <form id="addForm" class="form-inline mb-3">
+            <input type="text" class="form-control mr-2">
+            <input type="submit" class="btn btn.dark" value="submit">
+        </form>
+        <h2 class="title">items</h2>
+        <ul id="items" class="list-group">
+            <li class="list-group-item">item 1<button class="btn btn-danger btn -$m float-right delete">X</button></li>
+            <li class="list-group-item">item 2<button class="btn btn-danger btn -$m float-right delete">X</button></li>
+            <li class="list-group-item">item 3<button class="btn btn-danger btn -$m float-right delete">X</button></li>
+            <li class="list-group-item">item 4<button class="btn btn-danger btn -$m float-right delete">X</button></li>
+        </ul>
+        <span></span>
     </div>
-    <h2>item</h2>
-    <form>
-        <label>list</label>
-        <input type="text" name="list required" /><br>
-        <label>name</label>
-        <input type="text" name="username" required /><br>
-        <label>email</label>
-        <input type="email" name="email" required/><br>
-        <input type="button" value="submit">
-    </form>
-    <ol>
-        <li class="list-group-item">item 1</li>
-        <li>item 2</li>
-    </ol>
-    <script src="first.js"></script>
+    </div>
+
+    <script src="third.js"></script>
 </body>
 
 </html>
