@@ -33,11 +33,48 @@
                 localStorage.setItem('obj.name', JSON.stringify(obj))
                 showNewUserOnScreen(obj)
             }
+            window.addEventListener("DOMContentLoaded"), () => {
+                const localStorage = localStorage;
+                const localStoragekeys = Object.keys(localStorage)
+
+                for (var i = 0; i < localStorage.length; i++) {
+                    const key = localStoragekeys[i]
+                    const userDetailsString = localStorageObj[key];
+                    const userDetailsObj = JSON.parse(userDetailsString);
+                    showNewUserOnScreen(userDetailsObj)
+                }
+            }
 
             function showNewUserOnScreen(user) {
+                document.getElementById('name').value = '';
+                document.getElementById('phonenumber').value = '';
+                if (localStorage.getItem(user.name) !== null) {
+                    removeUserFromScreen(user.name)
+                }
                 const ParentNode = document.getElementById('listOfUsers');
                 const childHTML = `<li> ${user.name} - ${user.phonenumber}</li>`
-                ParentNode.innerHTML = ParentNode.innerHTML + childHTML;
+                parentNode.innerHTML = parentNode.innerHTML + childHTML;
+            }
+            functioneditUserDetails(name, phonenumber) {
+                document.getElementById('name').value = '';
+                document.getElementById('phonenumber').value = '';
+                deleteUser(name);
+            }
+
+            function deleteUser(name) {
+                console.log(name);
+                localStorage.removeItem(name);
+                removeUserFromScreen(name);
+            }
+
+            function removeUserFromScreen(name) {
+                const parentNode = document.getElementById('listOfUsers');
+                const childNodeToBeDeleted = document.getElementById(name);
+                if (childNodeToBeDeleted) {
+                    parentNode.removeChild(childNodeToBeDeleted)
+                }
+            }
+
             }
         </script>
     </body>
