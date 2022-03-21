@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<header>Appointment Booking App</header>
+
+<body>
+
+    <body>
+        <form onsubmit="saveToLocalStorage(event)">
+
+            <input type="text" name="name" />
+            <input type="tel" name="phonenumber" />
+            <button>submit</button><br>
+            <button onclick="myFunction()">edit</button>
+            <button onclick="myFunction()">delete</button>
+        </form>
+        <ul id="listOfUsers"></ul>
+        <script>
+            function saveToLocalStorage(event) {
+                event.preventDefault();
+                const name = event.target.name.value;
+                const phonenumber = event.target.phonenumber.value;
+                const obj = {
+                    name,
+                    phonenumber
+                }
+                localStorage.setItem('obj.name', JSON.stringify(obj))
+                showNewUserOnScreen(obj)
+            }
+
+            function showNewUserOnScreen(user) {
+                const ParentNode = document.getElementById('listOfUsers');
+                const childHTML = `<li> ${user.name} - ${user.phonenumber}</li>`
+                ParentNode.innerHTML = ParentNode.innerHTML + childHTML;
+            }
+        </script>
+    </body>
+
+</html>
