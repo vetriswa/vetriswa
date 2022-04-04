@@ -14,6 +14,7 @@
         <input type="tel" name="phonenumber" /><br>
         <button>submit</button>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
     <script>
         function saveToLocalStorage(event) {
             event.preventDefault();
@@ -28,8 +29,38 @@
                 email,
                 phonenumber
             }
-            localStorage.setItem('mailId', JSON.stringify(userDetails))
+
+            axios.post("https://crudcrud.com/api/c8192fef5c1f461da7ee9a2292a28b3e/appointmentdata", obj)
+                .then((response) => {
+                    showNewUserOnScreen(response.date)
+                    console.log(response)
+                })
+                .catch((err) => {
+                    connsole.log(err)
+                })
+                //ocalStorage.setItem('mailId', JSON.stringify(userDetails))
         }
+
+        window.addEventListener("DOMContentLoadwr", () => {
+            const data = axios.get("https://crudcrud.com/api/a78f29bd750248f7b2152200195b4ef2/appointmentdata")
+                .then((response) => {
+                    console.log(response)
+                    for (var i = 0; i < response.data.length; i++) {
+                        showNewUserOnScreen(response.data[i])
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+                // const localStorage = localStorage;
+                // const localStoragekeys = Object.key(localStorageObj)
+                // for (var i = 0; i < localStoragekeys.length; i++) {
+                //     const key = localStoragekeys[i]
+                //     const userDetailsString = localStorageObj[key];
+                //     const userDetailsObj = JSON.parse(userDetailsString);
+                //     showNewUserOnScreen(userDetailsObj)
+                // }
+        })
     </script>
 </body>
 
