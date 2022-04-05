@@ -1,7 +1,7 @@
 export default class ExpenseTracker {
     constructor(querySelectorString) {
         this.root = document.querySelector(querySelectorString);
-        this.root.innerHTML = BudgetTracker.html();
+        this.root.innerHTML = ExpenseTracker.html();
 
         this.root.querySelector(".new-entry").addEventListener("click", () => {
             this.onNewEntryBtnClick();
@@ -11,7 +11,7 @@ export default class ExpenseTracker {
     }
     static html() {
         return `
-            <table class="budget-tracker">
+            <table class="expense-tracker">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -67,7 +67,7 @@ export default class ExpenseTracker {
     }
 
     load() {
-        const entries = JSON.parse(localStorage.getItem("budget-tracker-entries-dev") || "[]");
+        const entries = JSON.parse(localStorage.getItem("expense-tracker-entries-dev") || "[]");
 
         for (const entry of entries) {
             this.addEntry(entry);
@@ -103,12 +103,12 @@ export default class ExpenseTracker {
             };
         });
 
-        localStorage.setItem("budget-tracker-entries-dev", JSON.stringify(data));
+        localStorage.setItem("expense-tracker-entries-dev", JSON.stringify(data));
         this.updateSummary();
     }
 
     addEntry(entry = {}) {
-        this.root.querySelector(".entries").insertAdjacentHTML("beforeend", BudgetTracker.entryHtml());
+        this.root.querySelector(".entries").insertAdjacentHTML("beforeend", expenseTracker.entryHtml());
 
         const row = this.root.querySelector(".entries tr:last-of-type");
 

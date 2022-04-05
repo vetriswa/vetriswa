@@ -8,7 +8,7 @@
     <title>Expense Tracker</title>
     <link rel=“shortcut icon” href=“[location of your favicon]” type=“image/x-icon”/>
     <link rel="stylesheet" href="expense.css">
-    <script type="module" src="expense.js"></script>
+    <script type="module" src="main.js"></script>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
                         <input class="input input-amount" type="number">
                     </td>
                     <td>
-                        <button type="button class=" delete-entry ">&#10005;</button>
+                        <button type="button" class=" delete-entry ">&#10005;</button>
                     </td>
                 </tr>
             </tbody>
@@ -56,12 +56,37 @@
                 <tr>
                     <td colspan="5 " class="summary ">
                         <strong>Total:</strong>
-                        <span class="total ">rs0.00</span>
+                        <span class="total ">$0.00</span>
                     </td>
                 </tr>
             </tfoot>
         </table>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+<script>
+    function saveToLocalStorage(event) {
+        event.preventDefault();
+        const date = event.date.value;
+        const description = event.description.value;
+        const type = event.type.value;
+        localStorage.setItem('date', date);
+        localStorage.setItem('description', description);
+        localStorage.setItem('type', type);
+        const obj = {
+            date,
+            description,
+            type
+        }
 
-</html>
+        axios.post("https:https://crudcrud.com/api/6080000bbb0d4a95b2aed7a0e6a129dd/appointmentdata", obj)
+            .then((response) => {
+                showNewUserOnScreen(response.date)
+                console.log(response)
+            })
+            .catch((err) => {
+                connsole.log(err)
+            })
+
+        <
+        /html>
